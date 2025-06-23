@@ -1,0 +1,77 @@
+{
+  "name": "scaffold-static",
+  "version": "1.9.0",
+  "description": "Start out building static websites powered by vanilla-js with this CLI tool",
+  "main": "bin/index.js",
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "bin": {
+    "scaffold-static": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "gulp",
+    "lint": "eslint __e2e__ src",
+    "lint:fix": "eslint --fix __e2e__ src",
+    "pretest": "yarn build && yarn lint",
+    "test": "jest",
+    "test:e2e": "jest __e2e__",
+    "test:unit": "jest src --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{__e2e__,src}/**/*.ts": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesgeorge007/scaffold-static.git"
+  },
+  "keywords": [
+    "nodejs",
+    "cli",
+    "inquirer.js",
+    "commander.js"
+  ],
+  "author": "James George<jamesgeorge998001@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jamesgeorge007/scaffold-static/issues"
+  },
+  "homepage": "https://github.com/jamesgeorge007/scaffold-static#readme",
+  "dependencies": {
+    "commander": "^6.2.1",
+    "execa": "^4.0.0",
+    "inquirer": "^6.2.1",
+    "kleur": "^3.0.3",
+    "mkdirp": "^1.0.3",
+    "node-banner": "^1.4.0",
+    "ora": "^4.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/inquirer": "^6.0.2",
+    "@types/jest": "^26.0.19",
+    "@types/mkdirp": "^0.5.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "del": "^5.1.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "gulp": "^4.0.2",
+    "husky": "^2.3.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.1.1",
+    "prettier": "^1.19.1",
+    "typescript": "^3.5.1"
+  }
+}
