@@ -2,16 +2,30 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
+        stage('Clone repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/NaveeinMohan/devops-static-site.git'
+                git 'https://github.com/NaveeinMohan/devops-static-site.git'
             }
         }
 
-        stage('Print Message') {
+        stage('Build Docker Image') {
             steps {
-                bat 'echo Hello from Jenkins Pipeline!'
+                script {
+                    dockerImage = docker.build("static-site")
+                }
             }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh "docker run -d -p 8080:80 --name static-site-container static-site || echo 'Container may already be running'"
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
         }
     }
 }
